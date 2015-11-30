@@ -1,6 +1,6 @@
 package test;
 
-public class trajet {
+public class Trajet {
 
 	String depart;
 	String arrive;
@@ -12,7 +12,7 @@ public class trajet {
 	
 	
 	//Constructeur
-	public trajet(String depart, String arrive, int hDepart, int hArrive,
+	public Trajet(String depart, String arrive, int hDepart, int hArrive,
 			int bus, int ligne) {
 		super();
 		this.depart = depart;
