@@ -98,6 +98,9 @@ public class test {
 	static  ArrayList<Trajet> trajets;
 	static  ArrayList<Bus> lesBus;
 	 
+	static int[][] distance_terminus;
+	static int[][] temps_terminus;
+	
 	 static void initialisation()
 	{
 		//aller
@@ -280,6 +283,10 @@ public class test {
 
 		lesBus = new ArrayList<Bus>();
 		
+		//tableau avec les distances entre terminus
+		
+		//tableau avec les temps entre terminus
+		
 	}
 	
 	public static void main(String[] args) {
@@ -290,10 +297,11 @@ public class test {
 		//on parcour les heures de la journée (à partir de 5h00)
 		for(int i=300;i<1440;++i)
 		{
-			//on parcour les heures de departs des trajets + les heures d'arrive
+			//on parcours les heures de departs des trajets + les heures d'arrive
 			for(Trajet T: trajets)
 			{
 				//on cherche un bus dispo pour l'heure de depart
+				//TODO vérifier que le bus peut faire le trajet interligne dans les temps
 				if(T.gethDepart()==i)
 				{
 					boolean unBusDispo=false;
@@ -302,9 +310,13 @@ public class test {
 						
 						if(B.isDisponible() && !unBusDispo)
 						{
+							if((B.getPosition() != null) && (B.getPosition() != T.getArrive())){
+								//voir si le bus peut arriver a temps au point de depart
+							}
 							B.setDisponible(false);
 							unBusDispo=true;
 							T.setBus(B);
+							B.getTrajetParcouru().add(T);
 						}
 					}
 					
@@ -314,6 +326,7 @@ public class test {
 						Bus nouveauxBus= new Bus(false);
 						lesBus.add(nouveauxBus);
 						T.setBus(nouveauxBus);
+						nouveauxBus.getTrajetParcouru().add(T);
 					}
 				}
 				
@@ -322,7 +335,9 @@ public class test {
 				if(T.gethArrive()==i-5)
 				{
 					T.getBus().setDisponible(true);
+					T.getBus().setPosition(T.getArrive());
 					T.setBus(null);
+					
 				}
 				
 			}
