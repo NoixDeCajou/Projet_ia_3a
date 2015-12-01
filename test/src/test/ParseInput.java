@@ -91,7 +91,7 @@ public class ParseInput {
 			    			   if( i == TrajetsLigne.size() ){
 			    				   //System.out.println("in the if if, str : " + str);
 
-			    				   TrajetsLigne.add(new Trajet( t , t , getMinute(str), getMinute(str), getLigne(ligne), sens));
+			    				   TrajetsLigne.add(new Trajet( t , t , getMinute(str), getMinute(str), getLigne(ligne), sens, 0));
 
 			    			   }
 			    			   else if( i < TrajetsLigne.size() ) {
@@ -120,7 +120,7 @@ public class ParseInput {
 
 		    				   if ( i >= TrajetsLigne.size() ){
 
-		    					   TrajetsLigne.add(new Trajet( t , t , 0, 0, getLigne(ligne), sens, false));
+		    					   TrajetsLigne.add(new Trajet( t , t , 0, 0, getLigne(ligne), sens, false, 0));
 		    				   }
 
 		    			   }
