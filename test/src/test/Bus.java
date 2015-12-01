@@ -8,6 +8,15 @@ public class Bus {
 
 	int kilometrageTrajet;
 	int kilometrageTotal;
+	int heureArrive;
+
+	public int getHeureArrive() {
+		return heureArrive;
+	}
+
+	public void setHeureArrive(int heureArrive) {
+		this.heureArrive = heureArrive;
+	}
 
 	String position;
 
@@ -68,7 +77,12 @@ public class Bus {
 
 	@Override
 	public String toString() {
-		return "Bus [disponible=" + disponible + "]";
+		return "Bus [disponible=" + disponible + ", kilometrageTrajet="
+				+ kilometrageTrajet + ", kilometrageTotal=" + kilometrageTotal
+				+ ", position=" + position + ", TrajetParcouru="
+				+ TrajetParcouru + "]";
 	}
+
+
 
 }

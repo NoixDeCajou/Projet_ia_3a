@@ -357,6 +357,9 @@ public class test {
 	public static void main(String[] args) {
 
 		initialisation();
+		
+		Fichier fichierSortie = new Fichier();
+		
 		//System.out.println(l1_1.toString());
 
 		//test
@@ -376,16 +379,36 @@ public class test {
 					boolean unBusDispo=false;
 					for(Bus B: lesBus)
 					{
+						
+						System.out.println(B.getPosition());
 
 						if(B.isDisponible() && !unBusDispo)
 						{
-							if((B.getPosition() != null) && (B.getPosition() != T.getArrive())){
+							int indice = indiceTerminus(B.getPosition());
+							int destination = indiceTerminus(T.getDepart());
+							int temps = temps_terminus[indice][destination];
+							if((B.getPosition() != null) && (B.getPosition() != T.getDepart()))
+							{
 								//voir si le bus peut arriver a temps au point de depart
+								
+								
+								if(temps < 5){
+									temps = 5;
+								}
+								if(T.gethDepart() >= B.heureArrive+temps )
+								{
+									B.setDisponible(false);
+									unBusDispo=true;
+									T.setBus(B);
+									B.getTrajetParcouru().add(T);
+								}
+							}else if ((B.getPosition() == T.getDepart()) && ((T.gethDepart() - B.heureArrive) >= 5))
+							{
+								B.setDisponible(false);
+								unBusDispo=true;
+								T.setBus(B);
+								B.getTrajetParcouru().add(T);
 							}
-							B.setDisponible(false);
-							unBusDispo=true;
-							T.setBus(B);
-							B.getTrajetParcouru().add(T);
 						}
 					}
 
@@ -395,6 +418,7 @@ public class test {
 						Bus nouveauxBus= new Bus(false);
 						lesBus.add(nouveauxBus);
 						T.setBus(nouveauxBus);
+						nouveauxBus.setPosition(T.getDepart());
 						nouveauxBus.getTrajetParcouru().add(T);
 						nouveauxBus.setKilometrageTotal(distance_terminus[0][indiceTerminus(T.getDepart())]);
 						//System.out.println(nouveauxBus.getKilometrageTotal());
@@ -403,7 +427,7 @@ public class test {
 
 
 				//on regarde si un Trajet se termine
-				if(T.gethArrive()==i-5)
+				if(T.gethArrive()==i/*-5*/)
 				{
 					T.getBus().setDisponible(true);
 					T.getBus().setPosition(T.getArrive());
@@ -411,6 +435,7 @@ public class test {
 					T.getBus().setKilometrageTotal(kilometrageTotal + T.getDistance());
 					int kilometrageTrajet = T.getBus().getKilometrageTrajet();
 					T.getBus().setKilometrageTrajet(kilometrageTrajet + T.getDistance());
+					T.getBus().setHeureArrive(i);
 					T.setBus(null);
 
 				}
@@ -438,6 +463,8 @@ public class test {
 
 		System.out.println("totalKm = " +totalKm);
 		System.out.println("kmTrajet = " +kmTrajet);
+		
+		fichierSortie.CreationFichier(lesBus, trajets);
 		
 	}
 }
