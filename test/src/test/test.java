@@ -108,6 +108,11 @@ public class test {
 	static int[][] distance_terminus;
 	static int[][] temps_terminus;
 	
+	
+	 static int indiceTerminus(String terminus){
+		return Integer.valueOf(terminus.substring(1));
+	 }
+	
 	 static void initialisation()
 	{
 		//aller
@@ -290,21 +295,55 @@ public class test {
 
 		lesBus = new ArrayList<Bus>();
 		
+		temps_terminus=new int[24][24];
+		distance_terminus=new int[24][24];
+		
 		//tableau avec les distances entre terminus
+		try (CSVReader reader = new CSVReader(new BufferedReader(
+		          new FileReader("distance.csv")));) {
+
+		    List<String[]> lines = reader.readAll();
+		    int i=0;
+		    int j=0;
+		    for(String[] s : lines)
+		    {
+		    	for(String ss : s )
+		    	{
+		    		distance_terminus[i][j]=Integer.valueOf(ss);
+		    		++j;
+		    	}
+		    	j=0;
+		    	++i;
+		    }
+		    //System.out.println(temps_terminus.get(23)[0]); 
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		//tableau avec les temps entre terminus
 		
 		try (CSVReader reader = new CSVReader(new BufferedReader(
-		          new FileReader("test.csv")));) {
+		          new FileReader("temps.csv")));) {
 
 		    List<String[]> lines = reader.readAll();
-		    //return lines.toArray(new String[lines.size()][]);
-		    System.out.println(lines.toArray(new String[lines.size()][]));
-		    
-
-		    
-		    System.out.println(lines.get(2)[3]);
-		    
+		    int i=0;
+		    int j=0;
+		    for(String[] s : lines)
+		    {
+		    	for(String ss : s )
+		    	{
+		    		temps_terminus[i][j]=Integer.valueOf(ss);
+		    		++j;
+		    	}
+		    	j=0;
+		    	++i;
+		    }
+		    //System.out.println(temps_terminus.get(23)[0]); 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -319,6 +358,10 @@ public class test {
 		
 		initialisation();
 		//System.out.println(l1_1.toString());
+		
+		//test
+		//System.out.println(distance_terminus[23][0]);
+		
 		
 		//on parcour les heures de la journée (à partir de 5h00)
 		for(int i=300;i<1440;++i)
@@ -353,6 +396,8 @@ public class test {
 						lesBus.add(nouveauxBus);
 						T.setBus(nouveauxBus);
 						nouveauxBus.getTrajetParcouru().add(T);
+						nouveauxBus.setKilometrageTotal(distance_terminus[0][indiceTerminus(T.getDepart())]);	
+						//System.out.println(nouveauxBus.getKilometrageTotal());
 					}
 				}
 				
@@ -362,6 +407,8 @@ public class test {
 				{
 					T.getBus().setDisponible(true);
 					T.getBus().setPosition(T.getArrive());
+					int kilometrageTotal = T.getBus().getKilometrageTotal();
+					T.getBus().setKilometrageTotal(kilometrageTotal + distance_terminus[indiceTerminus(T.getDepart())][indiceTerminus(T.getArrive())] );
 					T.setBus(null);
 					
 				}
@@ -373,9 +420,18 @@ public class test {
 		}
 		
 		System.out.println(lesBus.size());
+		int i = 1;
+		int totalKm =0;
+		for(Bus b : lesBus){
+			System.out.print("bus"+i+" : ");
+			System.out.println(b.getKilometrageTotal());
+			totalKm += b.getKilometrageTotal();
+			System.out.print("	nombreTrajet : ");
+			System.out.println(b.trajetParcouru.size());
+			++i;
+		}
 		
-		
+		System.out.println("totalKm = " +totalKm);
 		
 	}
-
 }
