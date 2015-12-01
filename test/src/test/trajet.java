@@ -9,9 +9,17 @@ public class Trajet {
 	Bus bus;
 	int ligne;
 	char sens;
-
+	int distance;
 	private boolean firstSet;
 
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
 
 	//Constructeur
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
@@ -24,7 +32,7 @@ public class Trajet {
 		//this.bus = bus;
 		this.ligne = ligne;
 		this.sens = sens;
-
+		this.distance = dist;
 		this.firstSet = firstSet;
 	}
 
