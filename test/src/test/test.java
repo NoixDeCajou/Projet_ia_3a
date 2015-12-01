@@ -1,6 +1,13 @@
 package test;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.opencsv.CSVReader;
 
 
 
@@ -286,6 +293,25 @@ public class test {
 		//tableau avec les distances entre terminus
 		
 		//tableau avec les temps entre terminus
+		
+		try (CSVReader reader = new CSVReader(new BufferedReader(
+		          new FileReader("test.csv")));) {
+
+		    List<String[]> lines = reader.readAll();
+		    //return lines.toArray(new String[lines.size()][]);
+		    System.out.println(lines.toArray(new String[lines.size()][]));
+		    
+
+		    
+		    System.out.println(lines.get(2)[3]);
+		    
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
