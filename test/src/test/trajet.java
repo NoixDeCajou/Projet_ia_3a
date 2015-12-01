@@ -44,9 +44,24 @@ public class Trajet {
 
 	@Override
 	public String toString() {
-		return "Trajet [depart=" + depart + ", arrive=" + arrive + ", hDepart="
-				+ hDepart + ", hArrive=" + hArrive + ", bus=" + bus.toString() + ", sens"+sens
-				+ ", ligne=" + ligne + "+]";
+		return
+				"Trajet [depart="
+				+ depart
+				+ ", arrive="
+				+ arrive
+				+ ", hDepart="
+				+ hDepart
+				+ ", hArrive="
+				+ hArrive
+				+ ", bus="
+				+ bus
+				+ ", sens="
+				+ sens
+				+ ", ligne="
+				+ ligne
+				+ ", dist:="
+				+ distance
+				+ "]";
 	}
 
 	//Getters et Setter

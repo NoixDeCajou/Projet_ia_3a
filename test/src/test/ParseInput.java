@@ -138,7 +138,22 @@ public class ParseInput {
 		       }
 		       else if( lineString.startsWith("Dist") ){
 
+		    	   String[] strs = lineString.split(",");
+		    	   int i = 0;
 
+		    	   for(String str : strs){
+
+		    		   if(str.startsWith("Dist") == false){
+
+
+		    			   TrajetsLigne.get(i).setDistance( Integer.parseInt(str) );
+
+
+		    			   i++;
+
+		    		   }
+
+		    	   }
 
 		       }
 
