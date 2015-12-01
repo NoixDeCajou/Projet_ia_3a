@@ -9,12 +9,13 @@ public class Trajet {
 	Bus bus;
 	int ligne;
 	char sens;
-	
-	
-	
+
+	private boolean firstSet;
+
+
 	//Constructeur
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			 int ligne, char sens) {
+			 int ligne, char sens, boolean firstSet) {
 		super();
 		this.depart = depart;
 		this.arrive = arrive;
@@ -23,8 +24,16 @@ public class Trajet {
 		//this.bus = bus;
 		this.ligne = ligne;
 		this.sens = sens;
+
+		this.firstSet = firstSet;
 	}
-	
+
+	public Trajet(String depart, String arrive, int hDepart, int hArrive,
+			 int ligne, char sens) {
+		this(depart, arrive, hDepart, hArrive,
+				 ligne, sens, true);
+	}
+
 	@Override
 	public String toString() {
 		return "Trajet [depart=" + depart + ", arrive=" + arrive + ", hDepart="
@@ -71,11 +80,19 @@ public class Trajet {
 	}
 	public void setLigne(int ligne) {
 		this.ligne = ligne;
-	} 
+	}
 	public void setSens(char sens) {
 		this.sens = sens;
-	} 
-	
-	
-	
+	}
+
+
+	public boolean getFirstSet() {
+		return firstSet;
+	}
+
+	public void setFirstSet(boolean firstSet) {
+		this.firstSet = firstSet;
+	}
+
+
 }

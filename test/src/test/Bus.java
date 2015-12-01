@@ -3,43 +3,43 @@ package test;
 import java.util.ArrayList;
 
 public class Bus {
-	
-	boolean disponible;
-	
-	int kilometrageTrajet;
-	int kilometrageTotal;
-	
-	String position;
-	
-	ArrayList<Trajet> trajetParcouru;
-	
 
-	public ArrayList<Trajet> getTrajetParcouru() {
-		return trajetParcouru;
+	boolean disponible;
+
+	int kilometrageVoyage;
+	int kilometrageTotal;
+
+	String position;
+
+	ArrayList<Voyage> VoyageParcouru;
+
+
+	public ArrayList<Voyage> getVoyageParcouru() {
+		return VoyageParcouru;
 	}
 
-	public void setTrajetParcouru(ArrayList<Trajet> trajetParcouru) {
-		this.trajetParcouru = trajetParcouru;
+	public void setVoyageParcouru(ArrayList<Voyage> VoyageParcouru) {
+		this.VoyageParcouru = VoyageParcouru;
 	}
 
 	public Bus(boolean disponible) {
 		super();
 		this.disponible = disponible;
 		this.kilometrageTotal=0;
-		this.kilometrageTrajet=0;
-		trajetParcouru = new ArrayList<Trajet>();
+		this.kilometrageVoyage=0;
+		VoyageParcouru = new ArrayList<Voyage>();
 	}
 
 	public Bus() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getKilometrageTrajet() {
-		return kilometrageTrajet;
+	public int getKilometrageVoyage() {
+		return kilometrageVoyage;
 	}
 
-	public void setKilometrageTrajet(int kilometrageTrajet) {
-		this.kilometrageTrajet = kilometrageTrajet;
+	public void setKilometrageVoyage(int kilometrageVoyage) {
+		this.kilometrageVoyage = kilometrageVoyage;
 	}
 
 	public int getKilometrageTotal() {
