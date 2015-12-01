@@ -23,7 +23,7 @@ public class Trajet {
 
 	//Constructeur
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			 int ligne, char sens, boolean firstSet) {
+			 int ligne, char sens, boolean firstSet , int dist) {
 		super();
 		this.depart = depart;
 		this.arrive = arrive;
@@ -37,9 +37,9 @@ public class Trajet {
 	}
 
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			 int ligne, char sens) {
+			 int ligne, char sens , int dist) {
 		this(depart, arrive, hDepart, hArrive,
-				 ligne, sens, true);
+				 ligne, sens, true , dist);
 	}
 
 	@Override

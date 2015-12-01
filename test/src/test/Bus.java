@@ -6,40 +6,40 @@ public class Bus {
 
 	boolean disponible;
 
-	int kilometrageVoyage;
+	int kilometrageTrajet;
 	int kilometrageTotal;
 
 	String position;
 
-	ArrayList<Voyage> VoyageParcouru;
+	ArrayList<Trajet> TrajetParcouru;
 
 
-	public ArrayList<Voyage> getVoyageParcouru() {
-		return VoyageParcouru;
+	public ArrayList<Trajet> getTrajetParcouru() {
+		return TrajetParcouru;
 	}
 
-	public void setVoyageParcouru(ArrayList<Voyage> VoyageParcouru) {
-		this.VoyageParcouru = VoyageParcouru;
+	public void setTrajetParcouru(ArrayList<Trajet> TrajetParcouru) {
+		this.TrajetParcouru = TrajetParcouru;
 	}
 
 	public Bus(boolean disponible) {
 		super();
 		this.disponible = disponible;
 		this.kilometrageTotal=0;
-		this.kilometrageVoyage=0;
-		VoyageParcouru = new ArrayList<Voyage>();
+		this.kilometrageTrajet=0;
+		TrajetParcouru = new ArrayList<Trajet>();
 	}
 
 	public Bus() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getKilometrageVoyage() {
-		return kilometrageVoyage;
+	public int getKilometrageTrajet() {
+		return kilometrageTrajet;
 	}
 
-	public void setKilometrageVoyage(int kilometrageVoyage) {
-		this.kilometrageVoyage = kilometrageVoyage;
+	public void setKilometrageTrajet(int kilometrageTrajet) {
+		this.kilometrageTrajet = kilometrageTrajet;
 	}
 
 	public int getKilometrageTotal() {

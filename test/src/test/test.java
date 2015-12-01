@@ -14,95 +14,95 @@ import com.opencsv.CSVReader;
 
 public class test {
 
-	//Voyage 1 a 44 de la ligne 1
-	 static Voyage l1_1;
-	 static Voyage l1_2;
-	 static Voyage l1_3;
-	 static Voyage l1_4;
-	 static Voyage l1_5;
-	 static Voyage l1_6;
-	 static Voyage l1_7;
-	 static Voyage l1_8;
-	 static Voyage l1_9;
-	 static Voyage l1_10;
-	 static Voyage l1_11;
-	 static Voyage l1_12;
-	 static Voyage l1_13;
-	 static Voyage l1_14;
-	 static Voyage l1_15;
-	 static Voyage l1_16;
-	 static Voyage l1_17;
-	 static Voyage l1_18;
-	 static Voyage l1_19;
-	 static Voyage l1_20;
-	 static Voyage l1_21;
-	 static Voyage l1_22;
-	 static Voyage l1_23;
-	 static Voyage l1_24;
-	 static Voyage l1_25;
-	 static Voyage l1_26;
-	 static Voyage l1_27;
-	 static Voyage l1_28;
-	 static Voyage l1_29;
-	 static Voyage l1_30;
-	 static Voyage l1_31;
-	 static Voyage l1_32;
-	 static Voyage l1_33;
-	 static Voyage l1_34;
-	 static Voyage l1_35;
-	 static Voyage l1_36;
-	 static Voyage l1_37;
-	 static Voyage l1_38;
-	 static Voyage l1_39;
-	 static Voyage l1_40;
-	 static Voyage l1_41;
-	 static Voyage l1_42;
-	 static Voyage l1_43;
-	 static Voyage l1_44;
+	//Trajet 1 a 44 de la ligne 1
+	 static Trajet l1_1;
+	 static Trajet l1_2;
+	 static Trajet l1_3;
+	 static Trajet l1_4;
+	 static Trajet l1_5;
+	 static Trajet l1_6;
+	 static Trajet l1_7;
+	 static Trajet l1_8;
+	 static Trajet l1_9;
+	 static Trajet l1_10;
+	 static Trajet l1_11;
+	 static Trajet l1_12;
+	 static Trajet l1_13;
+	 static Trajet l1_14;
+	 static Trajet l1_15;
+	 static Trajet l1_16;
+	 static Trajet l1_17;
+	 static Trajet l1_18;
+	 static Trajet l1_19;
+	 static Trajet l1_20;
+	 static Trajet l1_21;
+	 static Trajet l1_22;
+	 static Trajet l1_23;
+	 static Trajet l1_24;
+	 static Trajet l1_25;
+	 static Trajet l1_26;
+	 static Trajet l1_27;
+	 static Trajet l1_28;
+	 static Trajet l1_29;
+	 static Trajet l1_30;
+	 static Trajet l1_31;
+	 static Trajet l1_32;
+	 static Trajet l1_33;
+	 static Trajet l1_34;
+	 static Trajet l1_35;
+	 static Trajet l1_36;
+	 static Trajet l1_37;
+	 static Trajet l1_38;
+	 static Trajet l1_39;
+	 static Trajet l1_40;
+	 static Trajet l1_41;
+	 static Trajet l1_42;
+	 static Trajet l1_43;
+	 static Trajet l1_44;
 
-	 static Voyage l1_45;
-	 static Voyage l1_46;
-	 static Voyage l1_47;
-	 static Voyage l1_48;
-	 static Voyage l1_49;
-	 static Voyage l1_50;
-	 static Voyage l1_51;
-	 static Voyage l1_52;
-	 static Voyage l1_53;
-	 static Voyage l1_54;
-	 static Voyage l1_55;
-	 static Voyage l1_56;
-	 static Voyage l1_57;
-	 static Voyage l1_58;
-	 static Voyage l1_59;
-	 static Voyage l1_60;
-	 static Voyage l1_61;
-	 static Voyage l1_62;
-	 static Voyage l1_63;
-	 static Voyage l1_64;
-	 static Voyage l1_65;
-	 static Voyage l1_66;
-	 static Voyage l1_67;
-	 static Voyage l1_68;
-	 static Voyage l1_69;
-	 static Voyage l1_70;
-	 static Voyage l1_71;
-	 static Voyage l1_72;
-	 static Voyage l1_73;
-	 static Voyage l1_74;
-	 static Voyage l1_75;
-	 static Voyage l1_76;
-	 static Voyage l1_77;
-	 static Voyage l1_78;
-	 static Voyage l1_79;
-	 static Voyage l1_80;
-	 static Voyage l1_81;
-	 static Voyage l1_82;
-	 static Voyage l1_83;
-	 static Voyage l1_84;
-	 static Voyage l1_85;
+	 static Trajet l1_45;
+	 static Trajet l1_46;
+	 static Trajet l1_47;
+	 static Trajet l1_48;
+	 static Trajet l1_49;
+	 static Trajet l1_50;
+	 static Trajet l1_51;
+	 static Trajet l1_52;
+	 static Trajet l1_53;
+	 static Trajet l1_54;
+	 static Trajet l1_55;
+	 static Trajet l1_56;
+	 static Trajet l1_57;
+	 static Trajet l1_58;
+	 static Trajet l1_59;
+	 static Trajet l1_60;
+	 static Trajet l1_61;
+	 static Trajet l1_62;
+	 static Trajet l1_63;
+	 static Trajet l1_64;
+	 static Trajet l1_65;
+	 static Trajet l1_66;
+	 static Trajet l1_67;
+	 static Trajet l1_68;
+	 static Trajet l1_69;
+	 static Trajet l1_70;
+	 static Trajet l1_71;
+	 static Trajet l1_72;
+	 static Trajet l1_73;
+	 static Trajet l1_74;
+	 static Trajet l1_75;
+	 static Trajet l1_76;
+	 static Trajet l1_77;
+	 static Trajet l1_78;
+	 static Trajet l1_79;
+	 static Trajet l1_80;
+	 static Trajet l1_81;
+	 static Trajet l1_82;
+	 static Trajet l1_83;
+	 static Trajet l1_84;
+	 static Trajet l1_85;
 
-	static  ArrayList<Voyage> Voyages;
+	static  ArrayList<Trajet> trajets;
 	static  ArrayList<Bus> lesBus;
 
 	static int[][] distance_terminus;
@@ -293,136 +293,6 @@ public class test {
 		trajets.add(l1_84);
 		trajets.add(l1_85);
 
-			l1_45 = new Voyage("T2","T1",402,430,1,'r');
-			l1_46 = new Voyage("T2","T1",422,450,1,'r');
-			l1_47 = new Voyage("T2","T1",442,470,1,'r');
-			l1_48 = new Voyage("T2","T1",462,490,1,'r');
-			l1_49 = new Voyage("T2","T1",482,510,1,'r');
-			l1_50 = new Voyage("T2","T1",502,530,1,'r');
-			l1_51 = new Voyage("T2","T1",522,550,1,'r');
-			l1_52 = new Voyage("T2","T1",542,570,1,'r');
-			l1_53 = new Voyage("T2","T1",562,590,1,'r');
-			l1_54 = new Voyage("T2","T1",582,610,1,'r');
-			l1_55 = new Voyage("T2","T1",602,630,1,'r');
-			l1_56 = new Voyage("T2","T1",622,650,1,'r');
-			l1_57 = new Voyage("T2","T1",642,670,1,'r');
-			l1_58 = new Voyage("T2","T1",662,690,1,'r');
-			l1_59 = new Voyage("T2","T1",682,710,1,'r');
-			l1_60 = new Voyage("T2","T1",702,730,1,'r');
-			l1_61 = new Voyage("T2","T1",722,750,1,'r');
-			l1_62 = new Voyage("T2","T1",742,770,1,'r');
-			l1_63 = new Voyage("T2","T1",762,790,1,'r');
-			l1_64 = new Voyage("T2","T1",782,810,1,'r');
-			l1_65 = new Voyage("T2","T1",802,830,1,'r');
-			l1_66 = new Voyage("T2","T1",822,850,1,'r');
-			l1_67 = new Voyage("T2","T1",842,870,1,'r');
-			l1_68 = new Voyage("T2","T1",862,890,1,'r');
-			l1_69 = new Voyage("T2","T1",882,910,1,'r');
-			l1_70 = new Voyage("T2","T1",902,930,1,'r');
-			l1_71 = new Voyage("T2","T1",922,950,1,'r');
-			l1_72 = new Voyage("T2","T1",942,970,1,'r');
-			l1_73 = new Voyage("T2","T1",962,990,1,'r');
-			l1_74 = new Voyage("T2","T1",982,1010,1,'r');
-			l1_75 = new Voyage("T2","T1",1002,1030,1,'r');
-			l1_76 = new Voyage("T2","T1",1022,1050,1,'r');
-			l1_77 = new Voyage("T2","T1",1042,1070,1,'r');
-			l1_78 = new Voyage("T2","T1",1062,1090,1,'r');
-			l1_79 = new Voyage("T2","T1",1082,1110,1,'r');
-			l1_80 = new Voyage("T2","T1",1102,1130,1,'r');
-			l1_81 = new Voyage("T2","T1",1122,1150,1,'r');
-			l1_82 = new Voyage("T2","T1",1142,1170,1,'r');
-			l1_83 = new Voyage("T2","T1",1162,1190,1,'r');
-			l1_84 = new Voyage("T2","T1",1182,1207,1,'r');
-			l1_85 = new Voyage("T2","T1",1220,1245,1,'r');
-
-		//liste des Voyages
-		Voyages = new ArrayList<Voyage>();
-		Voyages.add(l1_1);
-		Voyages.add(l1_2);
-		Voyages.add(l1_3);
-		Voyages.add(l1_4);
-		Voyages.add(l1_5);
-		Voyages.add(l1_6);
-		Voyages.add(l1_7);
-		Voyages.add(l1_8);
-		Voyages.add(l1_9);
-		Voyages.add(l1_10);
-		Voyages.add(l1_11);
-		Voyages.add(l1_12);
-		Voyages.add(l1_13);
-		Voyages.add(l1_14);
-		Voyages.add(l1_15);
-		Voyages.add(l1_16);
-		Voyages.add(l1_17);
-		Voyages.add(l1_18);
-		Voyages.add(l1_19);
-		Voyages.add(l1_20);
-		Voyages.add(l1_21);
-		Voyages.add(l1_22);
-		Voyages.add(l1_23);
-		Voyages.add(l1_24);
-		Voyages.add(l1_25);
-		Voyages.add(l1_26);
-		Voyages.add(l1_27);
-		Voyages.add(l1_28);
-		Voyages.add(l1_29);
-		Voyages.add(l1_30);
-		Voyages.add(l1_31);
-		Voyages.add(l1_32);
-		Voyages.add(l1_33);
-		Voyages.add(l1_34);
-		Voyages.add(l1_35);
-		Voyages.add(l1_36);
-		Voyages.add(l1_37);
-		Voyages.add(l1_38);
-		Voyages.add(l1_39);
-		Voyages.add(l1_40);
-		Voyages.add(l1_41);
-		Voyages.add(l1_42);
-		Voyages.add(l1_43);
-		Voyages.add(l1_44);
-		Voyages.add(l1_45);
-		Voyages.add(l1_46);
-		Voyages.add(l1_47);
-		Voyages.add(l1_48);
-		Voyages.add(l1_49);
-		Voyages.add(l1_50);
-		Voyages.add(l1_51);
-		Voyages.add(l1_52);
-		Voyages.add(l1_53);
-		Voyages.add(l1_54);
-		Voyages.add(l1_55);
-		Voyages.add(l1_56);
-		Voyages.add(l1_57);
-		Voyages.add(l1_58);
-		Voyages.add(l1_59);
-		Voyages.add(l1_60);
-		Voyages.add(l1_61);
-		Voyages.add(l1_62);
-		Voyages.add(l1_63);
-		Voyages.add(l1_64);
-		Voyages.add(l1_65);
-		Voyages.add(l1_66);
-		Voyages.add(l1_67);
-		Voyages.add(l1_68);
-		Voyages.add(l1_69);
-		Voyages.add(l1_70);
-		Voyages.add(l1_71);
-		Voyages.add(l1_72);
-		Voyages.add(l1_73);
-		Voyages.add(l1_74);
-		Voyages.add(l1_75);
-		Voyages.add(l1_76);
-		Voyages.add(l1_77);
-		Voyages.add(l1_78);
-		Voyages.add(l1_79);
-		Voyages.add(l1_80);
-		Voyages.add(l1_81);
-		Voyages.add(l1_82);
-		Voyages.add(l1_83);
-		Voyages.add(l1_84);
-		Voyages.add(l1_85);
-
 		lesBus = new ArrayList<Bus>();
 
 		temps_terminus=new int[24][24];
@@ -496,11 +366,11 @@ public class test {
 		//on parcour les heures de la journée (à partir de 5h00)
 		for(int i=300;i<1440;++i)
 		{
-			//on parcours les heures de departs des Voyages + les heures d'arrive
-			for(Voyage T: Voyages)
+			//on parcours les heures de departs des Trajets + les heures d'arrive
+			for(Trajet T: trajets)
 			{
 				//on cherche un bus dispo pour l'heure de depart
-				//TODO vérifier que le bus peut faire le Voyage interligne dans les temps
+				//TODO vérifier que le bus peut faire le Trajet interligne dans les temps
 				if(T.gethDepart()==i)
 				{
 					boolean unBusDispo=false;
@@ -525,14 +395,14 @@ public class test {
 						Bus nouveauxBus= new Bus(false);
 						lesBus.add(nouveauxBus);
 						T.setBus(nouveauxBus);
-						nouveauxBus.getVoyageParcouru().add(T);
+						nouveauxBus.getTrajetParcouru().add(T);
 						nouveauxBus.setKilometrageTotal(distance_terminus[0][indiceTerminus(T.getDepart())]);
 						//System.out.println(nouveauxBus.getKilometrageTotal());
 					}
 				}
 
 
-				//on regarde si un Voyage se termine
+				//on regarde si un Trajet se termine
 				if(T.gethArrive()==i-5)
 				{
 					T.getBus().setDisponible(true);
@@ -562,7 +432,7 @@ public class test {
 			totalKm += b.getKilometrageTotal();
 			kmTrajet += b.getKilometrageTrajet();
 			System.out.print("	nombreTrajet : ");
-			System.out.println(b.trajetParcouru.size());
+			System.out.println(b.TrajetParcouru.size());
 			++i;
 		}
 
