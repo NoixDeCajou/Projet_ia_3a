@@ -6,28 +6,30 @@ public class Trajet {
 	String arrive;
 	int hDepart;
 	int hArrive;
-	int bus;
+	Bus bus;
 	int ligne;
+	char sens;
 	
 	
 	
 	//Constructeur
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			int bus, int ligne) {
+			 int ligne, char sens) {
 		super();
 		this.depart = depart;
 		this.arrive = arrive;
 		this.hDepart = hDepart;
 		this.hArrive = hArrive;
-		this.bus = bus;
+		//this.bus = bus;
 		this.ligne = ligne;
+		this.sens = sens;
 	}
 	
 	@Override
 	public String toString() {
-		return "trajet [depart=" + depart + ", arrive=" + arrive + ", hDepart="
-				+ hDepart + ", hArrive=" + hArrive + ", bus=" + bus
-				+ ", ligne=" + ligne + "]";
+		return "Trajet [depart=" + depart + ", arrive=" + arrive + ", hDepart="
+				+ hDepart + ", hArrive=" + hArrive + ", bus=" + bus.toString() + ", sens"+sens
+				+ ", ligne=" + ligne + "+]";
 	}
 
 	//Getters et Setter
@@ -52,13 +54,16 @@ public class Trajet {
 	public int gethArrive() {
 		return hArrive;
 	}
+	public int getSens() {
+		return sens;
+	}
 	public void sethArrive(int hArrive) {
 		this.hArrive = hArrive;
 	}
-	public int getBus() {
+	public Bus getBus() {
 		return bus;
 	}
-	public void setBus(int bus) {
+	public void setBus(Bus bus) {
 		this.bus = bus;
 	}
 	public int getLigne() {
@@ -66,6 +71,9 @@ public class Trajet {
 	}
 	public void setLigne(int ligne) {
 		this.ligne = ligne;
+	} 
+	public void setSens(char sens) {
+		this.sens = sens;
 	} 
 	
 	
