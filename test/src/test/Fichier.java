@@ -22,7 +22,7 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 {
 	// Ouverture du fichier 
 	
-	File solution = new File("Solution.txt");
+	File solution = new File("Lescadorsdelia_TeamRannou.txt");
 	String chaine="";
 	int TotalKM =0;
 	int saut = 0;
@@ -56,7 +56,7 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 				{
 					chaine= chaine+",";
 				}
-				chaine =(chaine+T.ligne+":"+T.sens+":"+"v"+T.getNumeroArret());
+				chaine =(chaine+"l"+T.ligne+":"+T.sens+":"+"v"+T.getNumeroArret());
 				saut=1;
 			}
 			// On ecrit les informations sur le fichier
