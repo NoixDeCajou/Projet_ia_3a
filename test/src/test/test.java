@@ -483,7 +483,7 @@ public class test {
 		System.out.println("kmTrajet = " +kmTrajet);
 		System.out.println("dureeTotal = " +dureeTotal);
 
-		fichierSortie.CreationFichier(lesBus, trajets);
+		fichierSortie.CreationFichier(lesBus, trajets,dureeTotal);
 
 	}
 }

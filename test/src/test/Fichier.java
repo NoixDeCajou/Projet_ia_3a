@@ -1,3 +1,5 @@
+package test;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -50,7 +52,7 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 				{
 					chaine= chaine+", ";
 				}
-				chaine =(chaine+T.ligne+":"+T.sens+":"+T.getNumeroArret());
+				chaine =(chaine+T.ligne+":"+T.sens+":"+"v"+T.getNumeroArret());
 				saut=1;
 			}
 			// On ecrit les informations sur le fichier
