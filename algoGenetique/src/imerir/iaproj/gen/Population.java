@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Population {
 
+	// individus hermaphrodites
+
 	private ArrayList <Individu> individus;
 	private int taillePopulation = 100;
 	private float chanceDeMuter = 0.02f;
@@ -12,7 +14,24 @@ public class Population {
 
 	Random r = new Random();
 
+	public static void main(String[] args) {
+
+		Population p = new Population();
+
+		for(int i = 0; i<5000; i++){
+
+			p.evolve();
+
+		}
+
+		System.out.println( p.getBestIndividu().getFitness());
+
+	}
+
 	public Population() { // genère une population aleatoire
+
+
+		BaseDeTrajets.prepareTrajets();
 
 		individus = new ArrayList <Individu>();
 
@@ -21,6 +40,27 @@ public class Population {
 			individus.add( new Individu() ); // new individu random
 
 		}
+
+	}
+
+	private Individu getBestIndividu(){
+
+		Individu best = null;
+		int bestFitness = Integer.MAX_VALUE;
+
+		for(Individu i : individus){
+
+			i.calculateFitness();
+
+			if(i.getFitness() < bestFitness){
+
+				bestFitness = i.getFitness();
+				best = i;
+			}
+
+		}
+
+		return best;
 
 	}
 
@@ -39,7 +79,10 @@ public class Population {
 		for(Individu i : individus){
 
 			i.calculateFitness();
-			totalFitness += i.getFitness();
+			int f = i.getFitness();
+			totalFitness += f;
+			System.out.println("totalFitness: " + totalFitness);
+
 
 		}
 
@@ -70,8 +113,31 @@ public class Population {
 
 	}
 
-	private void repopulation() { // regenère la population jusqu'à la taille definie, en effectuant des croisements entre les individus
+	private void repopulation() { // regenère la population jusqu'à taillePopulation, en effectuant des croisements entre les individus
 
+		ArrayList <Individu> nouveauxIndividus = new ArrayList<Individu>();
+
+		while( (individus.size() + nouveauxIndividus.size()) < taillePopulation ){
+
+			// tirer au sort 2 personnes de la population
+
+			Individu f = individus.get(r.nextInt(individus.size()));
+
+			Individu m = individus.get(r.nextInt(individus.size()));
+
+			Individu nouveauNe = new Individu(f, m, false);
+
+			// mutation
+			if( r.nextFloat() < chanceDeMuter ){
+
+				nouveauNe.mutation();
+			}
+
+			nouveauxIndividus.add(nouveauNe);
+
+		}
+
+		individus.addAll(nouveauxIndividus);
 
 	}
 }

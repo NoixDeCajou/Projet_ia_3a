@@ -8,7 +8,7 @@ import imerir.iaproj.common.Trajet;
 
 public class BaseDeTrajets
 {
-	static ArrayList <Trajet> trajets;
+	static ArrayList <Trajet> trajets = null;
 
 	public static void prepareTrajets(){
 
