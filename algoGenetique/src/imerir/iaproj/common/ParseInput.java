@@ -1,41 +1,52 @@
 package imerir.iaproj.common;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.lang.NumberFormatException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ParseInput {
 
 	public static void main(String[] args) {
 
-		ParseInput pi = new ParseInput();
 
-		ArrayList <Trajet> trajets = pi.parseFile("C:\\Users\\imerir\\Documents\\Projet_ia_3a\\trunk\\data\\horaires.csv");
+		ArrayList<Trajet> trajets;
 
-		for(Trajet v : trajets){
+		try {
 
-			System.out.println(v);
+			trajets = ParseInput.parseFile( new File("C:\\Users\\imerir\\Documents\\Projet_IA3A\\trunk\\algoGenetique\\horaires.csv").toURI().toURL() );
 
+			for(Trajet v : trajets){
 
+				System.out.println(v);
+
+			}
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+
 	}
 
 	public ParseInput() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static ArrayList <Trajet> parseFile (String filename) {
+	public static ArrayList <Trajet> parseFile (URL ressource) {
 
 		ArrayList <Trajet> trajets = new ArrayList <Trajet>();
 
 		BufferedReader br = null;
 		try {
 
-			br = new BufferedReader(new FileReader(filename ) );
-
+			br = new BufferedReader( new InputStreamReader( ressource.openStream() ) );
 
 		    String lineString = null;
 
@@ -61,9 +72,7 @@ public class ParseInput {
 		    		   sens = 'a';
 		    	   }
 
-					//if(trajetsLigne.size() > 0){
-					//	System.out.println("before add all, size = " + trajetsLigne.size() + " and ligne = " + trajetsLigne.get(0).getLigne() );
-					//}
+
 					trajets.addAll(trajetsLigne);
 
 		    	   trajetsLigne = new ArrayList<Trajet>();
@@ -160,10 +169,12 @@ public class ParseInput {
 
 		    }
 
-		    //if(trajetsLigne.size() > 0){
-			//	System.out.println("before add all, size = " + trajetsLigne.size() + " and ligne = " + trajetsLigne.get(0).getLigne() );
-			//}
+
+
+
 		    trajets.addAll(trajetsLigne);
+
+
 
 		}
 		catch (FileNotFoundException e) {
@@ -188,14 +199,11 @@ public class ParseInput {
 			}
 		}
 
-
-		System.out.println( "trajets size: " + trajets.size() );
-
 		return trajets;
 
 	}
 
-	int getMinute(String s) throws NumberFormatException{
+	static int getMinute(String s) throws NumberFormatException{
 
 
 		String[] numbers = s.split(":");
@@ -206,7 +214,7 @@ public class ParseInput {
 
 	}
 
-	int getLigne(String s) throws NumberFormatException{
+	static int getLigne(String s) throws NumberFormatException{
 
 		String ligne = "ligne ";
 

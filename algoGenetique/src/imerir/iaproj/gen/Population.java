@@ -9,7 +9,15 @@ public class Population {
 	double chanceDeMuter=0.01;
 
 	public Population() { // genère une population aleatoire
-		// TODO Auto-generated constructor stub
+
+		individus = new ArrayList <Individu>();
+
+		for(int i = 0; i < taillePopulation; i++){
+
+			individus.add( new Individu() );
+
+		}
+
 	}
 
 	void evolve(){ // fait evoluer la population de la generation actuelle à la generation suivante
