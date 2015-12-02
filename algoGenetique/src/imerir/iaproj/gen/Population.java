@@ -6,6 +6,7 @@ public class Population {
 
 	ArrayList <Individu> individus;
 	int taillePopulation = 100;
+	double chanceDeMuter=0.01;
 
 	public Population() { // genère une population aleatoire
 		// TODO Auto-generated constructor stub
@@ -25,11 +26,4 @@ public class Population {
 
 
 	}
-
-	void mutation(Individu cible){ // fait muter un individu
-
-
-	}
-
-
 }
