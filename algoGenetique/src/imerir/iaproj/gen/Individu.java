@@ -7,11 +7,23 @@ public class Individu
 {
 
 	ArrayList <Integer> numerosBus;
-	Random randomGenerator=new Random();
+	Random randomGenerator = new Random();
+	int fitness = Integer.MAX_VALUE;
+
+	public int getFitness(){
+
+		return fitness;
+
+	}
+
+	public void calculateFitness() {
+		// TODO Auto-generated method stub
+
+	}
 
 	public int fitness()
 	{
-		if(this.checkValidite())
+		if( this.checkValidite() )
 		{
 			return countBus();
 		}
@@ -25,7 +37,7 @@ public class Individu
 	{
 		ArrayList <Integer> numerosBusCount = new ArrayList <Integer>();
 		int cpt=0;
-		
+
 		for(Integer i : numerosBus)
 		{
 			if(!numerosBusCount.contains(i))
@@ -34,19 +46,19 @@ public class Individu
 				cpt++;
 			}
 		}
-		
+
 		return cpt;
 	}
 
 	private boolean checkValidite()
 	{
-
-
 		return false;
 	}
 
-	public void mutation()
-	{ // fait muter un individu
+	public void mutation() // fait muter un individu
+	{
 		numerosBus.set(randomGenerator.nextInt(numerosBus.size()),randomGenerator.nextInt(numerosBus.size()));
 	}
+
+
 }

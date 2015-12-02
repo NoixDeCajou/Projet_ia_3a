@@ -54,7 +54,6 @@ public class ParseInput {
 		    char sens = 'r';
 		    String t = "";
 
-
 		    ArrayList <Trajet> trajetsLigne = new ArrayList <Trajet>();
 
 		    while ((lineString = br.readLine()) != null) {
@@ -72,13 +71,11 @@ public class ParseInput {
 		    		   sens = 'a';
 		    	   }
 
-
 					trajets.addAll(trajetsLigne);
 
 		    	   trajetsLigne = new ArrayList<Trajet>();
 		       }
 		       else if( lineString.startsWith("T") ){
-
 
 		    	   String[] strs = lineString.split(",");
 		    	   int i = 0;
@@ -86,7 +83,6 @@ public class ParseInput {
 		    	   for(String str : strs){
 
 		    		   if(str.startsWith("T") == false){
-
 
 		    			   //System.out.println("str: " + str);
 
@@ -126,7 +122,6 @@ public class ParseInput {
 		    				   //System.out.println("in the else, str: " + str);
 		    				   //System.out.println("in the else, bool: " + ( i < trajetsLigne.size() ));
 
-
 		    				   if ( i >= trajetsLigne.size() ){
 
 		    					   trajetsLigne.add(new Trajet( t , t , 0, 0, getLigne(ligne), sens, false, 0, i+1));
@@ -143,7 +138,6 @@ public class ParseInput {
 
 		    	   }
 
-
 		       }
 		       else if( lineString.startsWith("Dist") ){
 
@@ -154,9 +148,7 @@ public class ParseInput {
 
 		    		   if(str.startsWith("Dist") == false){
 
-
 		    			   trajetsLigne.get(i).setDistance( Integer.parseInt(str) );
-
 
 		    			   i++;
 
@@ -166,15 +158,9 @@ public class ParseInput {
 
 		       }
 
-
 		    }
 
-
-
-
 		    trajets.addAll(trajetsLigne);
-
-
 
 		}
 		catch (FileNotFoundException e) {
