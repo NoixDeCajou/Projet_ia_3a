@@ -117,51 +117,52 @@ public class test {
 	 static void initialisation()
 	{
 			//aller
-			l1_1 = new Trajet("T1","T2",371,408,1,'a',10,0);
-			l1_2 = new Trajet("T1","T2",394,431,1,'a',10,0);
-			l1_3 = new Trajet("T1","T2",416,453,1,'a',10,0);
-			l1_4 = new Trajet("T1","T2",436,473,1,'a',10,0);
-			l1_5 = new Trajet("T1","T2",456,493,1,'a',10,0);
-			l1_6 = new Trajet("T1","T2",476,513,1,'a',10,0);
-			l1_7 = new Trajet("T1","T2",496,533,1,'a',10,0);
-			l1_8 = new Trajet("T1","T2",516,553,1,'a',10,0);
-			l1_9 = new Trajet("T1","T2",536,573,1,'a',10,0);
-			l1_10 = new Trajet("T1","T2",556,593,1,'a',10,0);
-			l1_11 = new Trajet("T1","T2",576,613,1,'a',10,0);
-			l1_12 = new Trajet("T1","T2",596,633,1,'a',10,0);
-			l1_13 = new Trajet("T1","T2",616,653,1,'a',10,0);
-			l1_14 = new Trajet("T1","T2",636,673,1,'a',10,0);
-			l1_15 = new Trajet("T1","T2",656,693,1,'a',10,0);
-			l1_16 = new Trajet("T1","T2",676,713,1,'a',10,0);
-			l1_17 = new Trajet("T1","T2",696,733,1,'a',10,0);
-			l1_18 = new Trajet("T1","T2",716,753,1,'a',10,0);
-			l1_19 = new Trajet("T1","T2",736,773,1,'a',10,0);
-			l1_20 = new Trajet("T1","T2",756,793,1,'a',10,0);
-			l1_21 = new Trajet("T1","T2",776,813,1,'a',10,0);
-			l1_22 = new Trajet("T1","T2",796,833,1,'a',10,0);
-			l1_23 = new Trajet("T1","T2",816,853,1,'a',10,0);
-			l1_24 = new Trajet("T1","T2",836,873,1,'a',10,0);
-			l1_25 = new Trajet("T1","T2",856,893,1,'a',10,0);
-			l1_26 = new Trajet("T1","T2",876,913,1,'a',10,0);
-			l1_27 = new Trajet("T1","T2",896,933,1,'a',10,0);
-			l1_28 = new Trajet("T1","T2",916,953,1,'a',10,0);
-			l1_29 = new Trajet("T1","T2",936,973,1,'a',10,0);
-			l1_30 = new Trajet("T1","T2",956,993,1,'a',10,0);
-			l1_31 = new Trajet("T1","T2",976,1013,1,'a',10,0);
-			l1_32 = new Trajet("T1","T2",996,1033,1,'a',10,0);
-			l1_33 = new Trajet("T1","T2",1016,1053,1,'a',10,0);
-			l1_34 = new Trajet("T1","T2",1036,1073,1,'a',10,0);
-			l1_35 = new Trajet("T1","T2",1056,1093,1,'a',10,0);
-			l1_36 = new Trajet("T1","T2",1076,1113,1,'a',10,0);
-			l1_37 = new Trajet("T1","T2",1096,1133,1,'a',10,0);
-			l1_38 = new Trajet("T1","T2",1116,1153,1,'a',10,0);
-			l1_39 = new Trajet("T1","T2",1136,1173,1,'a',10,0);
-			l1_40 = new Trajet("T1","T2",1156,1193,1,'a',10,0);
-			l1_41 = new Trajet("T1","T2",1176,1213,1,'a',10,0);
-			l1_42 = new Trajet("T1","T2",1196,1233,1,'a',10,0);
-			l1_43 = new Trajet("T1","T3",1207,1210,1,'a',2,0);
-			l1_44 = new Trajet("T1","T3",1245,1248,1,'a',2,0);
-
+		 /*
+			l1_1 = new Trajet("T1","T2",371,408,1,'a',10);
+			l1_2 = new Trajet("T1","T2",394,431,1,'a',10);
+			l1_3 = new Trajet("T1","T2",416,453,1,'a',10);
+			l1_4 = new Trajet("T1","T2",436,473,1,'a',10);
+			l1_5 = new Trajet("T1","T2",456,493,1,'a',10);
+			l1_6 = new Trajet("T1","T2",476,513,1,'a',10);
+			l1_7 = new Trajet("T1","T2",496,533,1,'a',10);
+			l1_8 = new Trajet("T1","T2",516,553,1,'a',10);
+			l1_9 = new Trajet("T1","T2",536,573,1,'a',10);
+			l1_10 = new Trajet("T1","T2",556,593,1,'a',10);
+			l1_11 = new Trajet("T1","T2",576,613,1,'a',10);
+			l1_12 = new Trajet("T1","T2",596,633,1,'a',10);
+			l1_13 = new Trajet("T1","T2",616,653,1,'a',10);
+			l1_14 = new Trajet("T1","T2",636,673,1,'a',10);
+			l1_15 = new Trajet("T1","T2",656,693,1,'a',10);
+			l1_16 = new Trajet("T1","T2",676,713,1,'a',10);
+			l1_17 = new Trajet("T1","T2",696,733,1,'a',10);
+			l1_18 = new Trajet("T1","T2",716,753,1,'a',10);
+			l1_19 = new Trajet("T1","T2",736,773,1,'a',10);
+			l1_20 = new Trajet("T1","T2",756,793,1,'a',10);
+			l1_21 = new Trajet("T1","T2",776,813,1,'a',10);
+			l1_22 = new Trajet("T1","T2",796,833,1,'a',10);
+			l1_23 = new Trajet("T1","T2",816,853,1,'a',10);
+			l1_24 = new Trajet("T1","T2",836,873,1,'a',10);
+			l1_25 = new Trajet("T1","T2",856,893,1,'a',10);
+			l1_26 = new Trajet("T1","T2",876,913,1,'a',10);
+			l1_27 = new Trajet("T1","T2",896,933,1,'a',10);
+			l1_28 = new Trajet("T1","T2",916,953,1,'a',10);
+			l1_29 = new Trajet("T1","T2",936,973,1,'a',10);
+			l1_30 = new Trajet("T1","T2",956,993,1,'a',10);
+			l1_31 = new Trajet("T1","T2",976,1013,1,'a',10);
+			l1_32 = new Trajet("T1","T2",996,1033,1,'a',10);
+			l1_33 = new Trajet("T1","T2",1016,1053,1,'a',10);
+			l1_34 = new Trajet("T1","T2",1036,1073,1,'a',10);
+			l1_35 = new Trajet("T1","T2",1056,1093,1,'a',10);
+			l1_36 = new Trajet("T1","T2",1076,1113,1,'a',10);
+			l1_37 = new Trajet("T1","T2",1096,1133,1,'a',10);
+			l1_38 = new Trajet("T1","T2",1116,1153,1,'a',10);
+			l1_39 = new Trajet("T1","T2",1136,1173,1,'a',10);
+			l1_40 = new Trajet("T1","T2",1156,1193,1,'a',10);
+			l1_41 = new Trajet("T1","T2",1176,1213,1,'a',10);
+			l1_42 = new Trajet("T1","T2",1196,1233,1,'a',10);
+			l1_43 = new Trajet("T1","T3",1207,1210,1,'a',2);
+			l1_44 = new Trajet("T1","T3",1245,1248,1,'a',2);
+			
 			//retour
 
 			l1_45 = new Trajet("T2","T1",402,430,1,'r',8,0);
@@ -293,6 +294,11 @@ public class test {
 		trajets.add(l1_83);
 		trajets.add(l1_84);
 		trajets.add(l1_85);
+		*/
+			
+		 ParseInput pi = new ParseInput();
+	
+		trajets = pi.parseFile("horaires.csv");
 
 		lesBus = new ArrayList<Bus>();
 
@@ -388,6 +394,7 @@ public class test {
 							int indice = indiceTerminus(B.getPosition());
 							int destination = indiceTerminus(T.getDepart());
 							int temps = temps_terminus[indice][destination];
+							
 							if((B.getPosition() != null) && (B.getPosition() != T.getDepart()))
 							{
 								//voir si le bus peut arriver a temps au point de depart
