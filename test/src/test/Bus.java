@@ -9,6 +9,7 @@ public class Bus {
 	int kilometrageTrajet;
 	int kilometrageTotal;
 	int heureArrive;
+	
 
 	public int getHeureArrive() {
 		return heureArrive;
@@ -29,6 +30,11 @@ public class Bus {
 
 	public void setTrajetParcouru(ArrayList<Trajet> TrajetParcouru) {
 		this.TrajetParcouru = TrajetParcouru;
+	}
+	
+	public void ajoutTrajet(Trajet T)
+	{
+		this.TrajetParcouru.add(T);
 	}
 
 	public Bus(boolean disponible) {

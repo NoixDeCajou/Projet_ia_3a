@@ -107,7 +107,8 @@ public class test {
 
 	static int[][] distance_terminus;
 	static int[][] temps_terminus;
-
+	
+	static int dureeTotal = 0;
 
 	 static int indiceTerminus(String terminus){
 		return Integer.valueOf(terminus.substring(1));
@@ -401,6 +402,7 @@ public class test {
 									unBusDispo=true;
 									T.setBus(B);
 									B.getTrajetParcouru().add(T);
+									dureeTotal += temps;
 								}
 							}else if ((B.getPosition() == T.getDepart()) && ((T.gethDepart() - B.heureArrive) >= 5))
 							{
@@ -422,6 +424,8 @@ public class test {
 						nouveauxBus.getTrajetParcouru().add(T);
 						nouveauxBus.setKilometrageTotal(distance_terminus[0][indiceTerminus(T.getDepart())]);
 						//System.out.println(nouveauxBus.getKilometrageTotal());
+						dureeTotal += temps_terminus[0][indiceTerminus(T.getDepart())];
+						
 					}
 				}
 
@@ -436,7 +440,13 @@ public class test {
 					int kilometrageTrajet = T.getBus().getKilometrageTrajet();
 					T.getBus().setKilometrageTrajet(kilometrageTrajet + T.getDistance());
 					T.getBus().setHeureArrive(i);
+					
+					//maj variable duree total
+					dureeTotal += T.gethArrive()-T.gethDepart();
+					
 					T.setBus(null);
+					
+					
 
 				}
 
@@ -451,6 +461,7 @@ public class test {
 		int totalKm =0;
 		int kmTrajet = 0;
 		
+		
 		for(Bus b : lesBus){
 			System.out.print("bus"+i+" : ");
 			System.out.println(b.getKilometrageTotal());
@@ -463,6 +474,7 @@ public class test {
 
 		System.out.println("totalKm = " +totalKm);
 		System.out.println("kmTrajet = " +kmTrajet);
+		System.out.println("dureeTotal = " +dureeTotal);
 		
 		fichierSortie.CreationFichier(lesBus, trajets);
 		
