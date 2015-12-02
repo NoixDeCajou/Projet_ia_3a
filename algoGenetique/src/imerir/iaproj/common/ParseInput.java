@@ -27,7 +27,7 @@ public class ParseInput {
 		// TODO Auto-generated constructor stub
 	}
 
-	ArrayList <Trajet> parseFile (String filename) {
+	public static ArrayList <Trajet> parseFile (String filename) {
 
 		ArrayList <Trajet> trajets = new ArrayList <Trajet>();
 
