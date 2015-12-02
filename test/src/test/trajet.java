@@ -10,8 +10,18 @@ public class Trajet {
 	int ligne;
 	char sens;
 	int distance;
+	int numeroArret;
+
 	private boolean firstSet;
 
+
+	public int getNumeroArret() {
+		return numeroArret;
+	}
+
+	public void setNumeroArret(int numeroArret) {
+		this.numeroArret = numeroArret;
+	}
 
 	public int getDistance() {
 		return distance;
@@ -23,7 +33,7 @@ public class Trajet {
 
 	//Constructeur
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			 int ligne, char sens, boolean firstSet , int dist) {
+			 int ligne, char sens, boolean firstSet , int dist, int numeroArret) {
 		super();
 		this.depart = depart;
 		this.arrive = arrive;
@@ -33,13 +43,16 @@ public class Trajet {
 		this.ligne = ligne;
 		this.sens = sens;
 		this.distance = dist;
+		this.numeroArret = numeroArret;
+
 		this.firstSet = firstSet;
+
 	}
 
 	public Trajet(String depart, String arrive, int hDepart, int hArrive,
-			 int ligne, char sens , int dist) {
+			 int ligne, char sens , int dist, int numeroArret) {
 		this(depart, arrive, hDepart, hArrive,
-				 ligne, sens, true , dist);
+				 ligne, sens, true , dist, numeroArret);
 	}
 
 	@Override
@@ -59,8 +72,10 @@ public class Trajet {
 				+ sens
 				+ ", ligne="
 				+ ligne
-				+ ", dist:="
+				+ ", dist="
 				+ distance
+				+ ", numeroArret="
+				+ numeroArret
 				+ "]";
 	}
 

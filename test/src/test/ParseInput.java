@@ -13,9 +13,9 @@ public class ParseInput {
 
 		ParseInput pi = new ParseInput();
 
-		ArrayList <Trajet> Trajets = pi.parseFile("C:\\Users\\imerir\\Documents\\Projet_ia_3a\\trunk\\data\\horaires.csv");
+		ArrayList <Trajet> trajets = pi.parseFile("C:\\Users\\imerir\\Documents\\Projet_ia_3a\\trunk\\data\\horaires.csv");
 
-		for(Trajet v : Trajets){
+		for(Trajet v : trajets){
 
 			System.out.println(v);
 
@@ -29,7 +29,7 @@ public class ParseInput {
 
 	ArrayList <Trajet> parseFile (String filename) {
 
-		ArrayList <Trajet> Trajets = new ArrayList <Trajet>();
+		ArrayList <Trajet> trajets = new ArrayList <Trajet>();
 
 		BufferedReader br = null;
 		try {
@@ -44,7 +44,7 @@ public class ParseInput {
 		    String t = "";
 
 
-		    ArrayList <Trajet> TrajetsLigne = new ArrayList <Trajet>();
+		    ArrayList <Trajet> trajetsLigne = new ArrayList <Trajet>();
 
 		    while ((lineString = br.readLine()) != null) {
 
@@ -61,12 +61,12 @@ public class ParseInput {
 		    		   sens = 'a';
 		    	   }
 
-					//if(TrajetsLigne.size() > 0){
-					//	System.out.println("before add all, size = " + TrajetsLigne.size() + " and ligne = " + TrajetsLigne.get(0).getLigne() );
+					//if(trajetsLigne.size() > 0){
+					//	System.out.println("before add all, size = " + trajetsLigne.size() + " and ligne = " + trajetsLigne.get(0).getLigne() );
 					//}
-					Trajets.addAll(TrajetsLigne);
+					trajets.addAll(trajetsLigne);
 
-		    	   TrajetsLigne = new ArrayList<Trajet>();
+		    	   trajetsLigne = new ArrayList<Trajet>();
 		       }
 		       else if( lineString.startsWith("T") ){
 
@@ -86,41 +86,41 @@ public class ParseInput {
 
 			    			   // System.out.println(ligne + " "  + t + ", "+ i + ": " + str);
 
-			    			   // System.out.println( "length: " + TrajetsLigne.size() );
+			    			   // System.out.println( "length: " + trajetsLigne.size() );
 
-			    			   if( i == TrajetsLigne.size() ){
+			    			   if( i == trajetsLigne.size() ){
 			    				   //System.out.println("in the if if, str : " + str);
 
-			    				   TrajetsLigne.add(new Trajet( t , t , getMinute(str), getMinute(str), getLigne(ligne), sens, 0));
+			    				   trajetsLigne.add(new Trajet( t , t , getMinute(str), getMinute(str), getLigne(ligne), sens, 0, i+1));
 
 			    			   }
-			    			   else if( i < TrajetsLigne.size() ) {
+			    			   else if( i < trajetsLigne.size() ) {
 
 			    				   //System.out.println("in the if else, str: " + str);
 
 
-			    				   if(TrajetsLigne.get(i).getFirstSet() == false){
+			    				   if(trajetsLigne.get(i).getFirstSet() == false){
 
-			    					   TrajetsLigne.get(i).setDepart( t );
-				    				   TrajetsLigne.get(i).sethDepart( getMinute(str) );
+			    					   trajetsLigne.get(i).setDepart( t );
+				    				   trajetsLigne.get(i).sethDepart( getMinute(str) );
 
-				    				   TrajetsLigne.get(i).setFirstSet( true );
+				    				   trajetsLigne.get(i).setFirstSet( true );
 
 			    				   }
 
-			    				   TrajetsLigne.get(i).setArrive( t );
-			    				   TrajetsLigne.get(i).sethArrive( getMinute(str) );
+			    				   trajetsLigne.get(i).setArrive( t );
+			    				   trajetsLigne.get(i).sethArrive( getMinute(str) );
 			    			   }
 
 		    			   }
 		    			   else {
 		    				   //System.out.println("in the else, str: " + str);
-		    				   //System.out.println("in the else, bool: " + ( i < TrajetsLigne.size() ));
+		    				   //System.out.println("in the else, bool: " + ( i < trajetsLigne.size() ));
 
 
-		    				   if ( i >= TrajetsLigne.size() ){
+		    				   if ( i >= trajetsLigne.size() ){
 
-		    					   TrajetsLigne.add(new Trajet( t , t , 0, 0, getLigne(ligne), sens, false, 0));
+		    					   trajetsLigne.add(new Trajet( t , t , 0, 0, getLigne(ligne), sens, false, 0, i+1));
 		    				   }
 
 		    			   }
@@ -146,7 +146,7 @@ public class ParseInput {
 		    		   if(str.startsWith("Dist") == false){
 
 
-		    			   TrajetsLigne.get(i).setDistance( Integer.parseInt(str) );
+		    			   trajetsLigne.get(i).setDistance( Integer.parseInt(str) );
 
 
 		    			   i++;
@@ -160,10 +160,10 @@ public class ParseInput {
 
 		    }
 
-		    //if(TrajetsLigne.size() > 0){
-			//	System.out.println("before add all, size = " + TrajetsLigne.size() + " and ligne = " + TrajetsLigne.get(0).getLigne() );
+		    //if(trajetsLigne.size() > 0){
+			//	System.out.println("before add all, size = " + trajetsLigne.size() + " and ligne = " + trajetsLigne.get(0).getLigne() );
 			//}
-		    Trajets.addAll(TrajetsLigne);
+		    trajets.addAll(trajetsLigne);
 
 		}
 		catch (FileNotFoundException e) {
@@ -189,9 +189,9 @@ public class ParseInput {
 		}
 
 
-		System.out.println( "Trajets size: " + Trajets.size() );
+		System.out.println( "trajets size: " + trajets.size() );
 
-		return Trajets;
+		return trajets;
 
 	}
 
