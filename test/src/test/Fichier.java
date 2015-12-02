@@ -1,5 +1,3 @@
-package test;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,17 +14,14 @@ public class Fichier {
 	
 	//Constructeur
 	
-
-
-public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets)
+public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int tempTotal)
 {
 	// Ouverture du fichier 
 	
 	File solution = new File("Solution.txt");
 	String chaine="";
 	int TotalKM =0;
-	
-	
+	int saut = 0;
 	
 	try{
 		FileWriter fw = new FileWriter(solution);
@@ -40,30 +35,35 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets)
 		//Affichage des noms du groupe
 		String nom = "# "+getEleve1()+", "+getEleve2()+", "+getEleve3()+", "+getEleve4()+", "+getEleve5()+System.getProperty("line.separator");
 		fw.write(nom);
-		fw.write(lesBus.size()+", distance"+", "+TotalKM+System.getProperty("line.separator"));
+		fw.write(lesBus.size()+", "+tempTotal+", "+TotalKM+System.getProperty("line.separator"));
 		
 		int i =1;
 		
 		// Pour chaque bus affecter 
 		for (Bus B: lesBus)
 		{
-			
+			// Boucle pour chaque trajet parcourut
 			for (Trajet T: B.getTrajetParcouru())
 			{
-				chaine =(chaine+T.ligne+":"+T.sens+":"+", ");
+				// Gestion de la virgule de fin
+				if (saut==1)
+				{
+					chaine= chaine+", ";
+				}
+				chaine =(chaine+T.ligne+":"+T.sens+":"+T.getNumeroArret());
+				saut=1;
 			}
-			
+			// On ecrit les informations sur le fichier
 			fw.write("bus"+i+", "+chaine+System.getProperty("line.separator"));
 			i++;
 			chaine="";
+			saut=0;
 		}
-		
 		//On force l'ecriture
 		fw.flush();
 		//Fermeture du flux
 		fw.close();
 	}
-	
 	catch(IOException e)
 	{
 		System.out.println("Erreur dans l'ecriture du fichier");
@@ -71,7 +71,6 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets)
 	}
 	
 }
-
 
 public String getEleve1() {
 	return eleve1;
