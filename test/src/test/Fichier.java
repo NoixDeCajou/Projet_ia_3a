@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Fichier {
 	
@@ -25,6 +27,8 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 	int TotalKM =0;
 	int saut = 0;
 	
+
+	
 	try{
 		FileWriter fw = new FileWriter(solution);
 		
@@ -37,7 +41,7 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 		//Affichage des noms du groupe
 		String nom = "# "+getEleve1()+", "+getEleve2()+", "+getEleve3()+", "+getEleve4()+", "+getEleve5()+System.getProperty("line.separator");
 		fw.write(nom);
-		fw.write(lesBus.size()+", "+tempTotal+", "+TotalKM+System.getProperty("line.separator"));
+		fw.write(lesBus.size()+","+tempTotal+","+TotalKM+System.getProperty("line.separator"));
 		
 		int i =1;
 		
@@ -50,13 +54,13 @@ public void CreationFichier(ArrayList<Bus> lesBus, ArrayList<Trajet>trajets,int 
 				// Gestion de la virgule de fin
 				if (saut==1)
 				{
-					chaine= chaine+", ";
+					chaine= chaine+",";
 				}
 				chaine =(chaine+T.ligne+":"+T.sens+":"+"v"+T.getNumeroArret());
 				saut=1;
 			}
 			// On ecrit les informations sur le fichier
-			fw.write("bus"+i+", "+chaine+System.getProperty("line.separator"));
+			fw.write("bus"+i+","+chaine+System.getProperty("line.separator"));
 			i++;
 			chaine="";
 			saut=0;

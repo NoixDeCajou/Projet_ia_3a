@@ -360,19 +360,10 @@ public class test {
 		}
 
 	}
-
-	public static void main(String[] args) {
-
-		initialisation();
-
-		Fichier fichierSortie = new Fichier();
-
-		//System.out.println(l1_1.toString());
-
-		//test
-		//System.out.println(distance_terminus[23][0]);
-
-
+	 
+	public static void algoGlouton()
+	{
+		
 		//on parcour les heures de la journée (à partir de 5h00)
 		for(int i=300;i<1440;++i)
 		{
@@ -462,6 +453,23 @@ public class test {
 
 
 		}
+		
+	}
+	 
+
+	public static void main(String[] args) {
+
+		initialisation();
+
+		Fichier fichierSortie = new Fichier();
+
+		//System.out.println(l1_1.toString());
+
+		//test
+		//System.out.println(distance_terminus[23][0]);
+
+		algoGlouton();
+
 
 		System.out.println(lesBus.size());
 		int i = 1;
