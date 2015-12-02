@@ -5,10 +5,21 @@ import java.util.Random;
 
 public class Individu
 {
-
 	ArrayList <Integer> numerosBus;
 	Random randomGenerator = new Random();
 	int fitness = Integer.MAX_VALUE;
+	
+	public Individu()
+	{
+		int cpt=0;
+		
+		while(cpt<BaseDeTrajets.getTrajets().size())
+		{
+			numerosBus.add(randomGenerator.nextInt(BaseDeTrajets.getTrajets().size()));
+			
+			cpt++;
+		}
+	}
 
 	public int getFitness(){
 
@@ -52,6 +63,8 @@ public class Individu
 
 	private boolean checkValidite()
 	{
+		
+		
 		return false;
 	}
 
