@@ -9,98 +9,11 @@ import java.util.List;
 
 import com.opencsv.CSVReader;
 
-
+import java.util.Collections;
 
 
 public class test {
 
-	//Trajet 1 a 44 de la ligne 1
-	 /*static Trajet l1_1;
-	 static Trajet l1_2;
-	 static Trajet l1_3;
-	 static Trajet l1_4;
-	 static Trajet l1_5;
-	 static Trajet l1_6;
-	 static Trajet l1_7;
-	 static Trajet l1_8;
-	 static Trajet l1_9;
-	 static Trajet l1_10;
-	 static Trajet l1_11;
-	 static Trajet l1_12;
-	 static Trajet l1_13;
-	 static Trajet l1_14;
-	 static Trajet l1_15;
-	 static Trajet l1_16;
-	 static Trajet l1_17;
-	 static Trajet l1_18;
-	 static Trajet l1_19;
-	 static Trajet l1_20;
-	 static Trajet l1_21;
-	 static Trajet l1_22;
-	 static Trajet l1_23;
-	 static Trajet l1_24;
-	 static Trajet l1_25;
-	 static Trajet l1_26;
-	 static Trajet l1_27;
-	 static Trajet l1_28;
-	 static Trajet l1_29;
-	 static Trajet l1_30;
-	 static Trajet l1_31;
-	 static Trajet l1_32;
-	 static Trajet l1_33;
-	 static Trajet l1_34;
-	 static Trajet l1_35;
-	 static Trajet l1_36;
-	 static Trajet l1_37;
-	 static Trajet l1_38;
-	 static Trajet l1_39;
-	 static Trajet l1_40;
-	 static Trajet l1_41;
-	 static Trajet l1_42;
-	 static Trajet l1_43;
-	 static Trajet l1_44;
-
-	 static Trajet l1_45;
-	 static Trajet l1_46;
-	 static Trajet l1_47;
-	 static Trajet l1_48;
-	 static Trajet l1_49;
-	 static Trajet l1_50;
-	 static Trajet l1_51;
-	 static Trajet l1_52;
-	 static Trajet l1_53;
-	 static Trajet l1_54;
-	 static Trajet l1_55;
-	 static Trajet l1_56;
-	 static Trajet l1_57;
-	 static Trajet l1_58;
-	 static Trajet l1_59;
-	 static Trajet l1_60;
-	 static Trajet l1_61;
-	 static Trajet l1_62;
-	 static Trajet l1_63;
-	 static Trajet l1_64;
-	 static Trajet l1_65;
-	 static Trajet l1_66;
-	 static Trajet l1_67;
-	 static Trajet l1_68;
-	 static Trajet l1_69;
-	 static Trajet l1_70;
-	 static Trajet l1_71;
-	 static Trajet l1_72;
-	 static Trajet l1_73;
-	 static Trajet l1_74;
-	 static Trajet l1_75;
-	 static Trajet l1_76;
-	 static Trajet l1_77;
-	 static Trajet l1_78;
-	 static Trajet l1_79;
-	 static Trajet l1_80;
-	 static Trajet l1_81;
-	 static Trajet l1_82;
-	 static Trajet l1_83;
-	 static Trajet l1_84;
-	 static Trajet l1_85;*/
 
 	static  ArrayList<Trajet> trajets;
 	static  ArrayList<Bus> lesBus;
@@ -186,6 +99,121 @@ public class test {
 		//System.out.println("TEMPS POUR FAIRE T5 -> T9 : "+ temps_terminus[7][18]);
 
 	}
+	
+	public static void algoGlouton2()
+	{
+		//on parcour les heures de la journée (à partir de 5h00)
+				for(int i=300;i<1440;++i)
+				{
+					//on parcours les heures de departs des Trajets + les heures d'arrive
+					for(Trajet T: trajets)
+					{
+						//on cherche un bus dispo pour l'heure de depart
+						//TODO vérifier que le bus peut faire le Trajet interligne dans les temps
+						if(T.gethDepart()==i)
+						{
+							boolean unBusDispo=false;
+							for(Bus B: lesBus)
+							{
+
+								//System.out.println(B.getPosition());
+
+								if(B.isDisponible() && !unBusDispo)
+								{
+									int indice = indiceTerminus(B.getPosition());
+									int destination = indiceTerminus(T.getDepart());
+									int temps = temps_terminus[indice][destination];
+									
+									B.tempsAvantTrajet=temps;
+									
+									if((B.getPosition() != null) && (B.getPosition() != T.getDepart()))
+									{
+										//voir si le bus peut arriver a temps au point de depart
+
+
+										if(temps < 5){
+											temps = 5;
+											B.tempsAvantTrajet=temps;
+										}
+										
+										if(T.gethDepart() >= B.heureArrive+temps )
+										{
+											B.setDisponible(false);
+											unBusDispo=true;
+											T.setBus(B);
+											B.getTrajetParcouru().add(T);
+											int busKm = B.getKilometrageTotal();
+											B.setKilometrageTotal(busKm + distance_terminus[indiceTerminus(B.getPosition())][indiceTerminus(T.getDepart())]);
+											dureeTotal += temps;
+											//System.out.println("Temps de position() à prochain depart : "+temps);
+										}
+									}else if ((B.getPosition() == T.getDepart()) && ((T.gethDepart() - B.heureArrive) >= 5))
+									{
+										B.setDisponible(false);
+										unBusDispo=true;
+										T.setBus(B);
+										B.getTrajetParcouru().add(T);
+										dureeTotal += 5;
+										//System.out.println("Temps de batement : "+5);
+									}
+										
+								}
+								
+							}
+								 
+							
+							
+
+							//on cree un bus si aucun bus dispo
+							if(unBusDispo==false)
+							{
+								Bus nouveauxBus= new Bus(false);
+								lesBus.add(nouveauxBus);
+								T.setBus(nouveauxBus);
+								nouveauxBus.setPosition(T.getDepart());
+								nouveauxBus.getTrajetParcouru().add(T);
+								int busKm = nouveauxBus.getKilometrageTotal();
+								nouveauxBus.setKilometrageTotal(busKm + distance_terminus[0][indiceTerminus(T.getDepart())]);
+								//System.out.println(nouveauxBus.getKilometrageTotal());
+								dureeTotal += temps_terminus[0][indiceTerminus(T.getDepart())];
+								//System.out.println("Temps de depot à prochain depart : "+temps_terminus[0][indiceTerminus(T.getDepart())]);
+
+							}
+							
+							//on vas mélanger les bus aléatoirement
+							Collections.shuffle(lesBus);
+
+						}
+
+
+						//on regarde si un Trajet se termine
+						if(T.gethArrive()==i/*-5*/)
+						{
+							T.getBus().setDisponible(true);
+							T.getBus().setPosition(T.getArrive());
+							int kilometrageTotal = T.getBus().getKilometrageTotal();
+							T.getBus().setKilometrageTotal(kilometrageTotal + T.getDistance());
+							int kilometrageTrajet = T.getBus().getKilometrageTrajet();
+							T.getBus().setKilometrageTrajet(kilometrageTrajet + T.getDistance());
+							T.getBus().setHeureArrive(i);
+
+							//maj variable duree total
+							dureeTotal += T.gethArrive()-T.gethDepart();
+							//System.out.println("Temps de trajet : "+ (T.gethArrive()-T.gethDepart()));
+
+							T.setBus(null);
+
+
+
+						}
+
+					}
+					//on melange les trajets
+					Collections.shuffle(trajets);
+
+
+				}
+	}
 	 
 	public static void algoGlouton()
 	{
@@ -212,6 +240,8 @@ public class test {
 							int destination = indiceTerminus(T.getDepart());
 							int temps = temps_terminus[indice][destination];
 							
+							B.tempsAvantTrajet=temps;
+							
 							if((B.getPosition() != null) && (B.getPosition() != T.getDepart()))
 							{
 								//voir si le bus peut arriver a temps au point de depart
@@ -219,7 +249,9 @@ public class test {
 
 								if(temps < 5){
 									temps = 5;
+									B.tempsAvantTrajet=temps;
 								}
+								
 								if(T.gethDepart() >= B.heureArrive+temps )
 								{
 									B.setDisponible(false);
@@ -240,8 +272,12 @@ public class test {
 								dureeTotal += 5;
 								//System.out.println("Temps de batement : "+5);
 							}
+								
 						}
+						
 					}
+					
+					
 
 					//on cree un bus si aucun bus dispo
 					if(unBusDispo==false)
@@ -325,64 +361,87 @@ public class test {
 		
 	}
 	 
+	static void RechercheRandom()
+	{
+		
+	}
 
 	public static void main(String[] args) {
 
-		initialisation();
-
-		Fichier fichierSortie = new Fichier();
-
-		//System.out.println(l1_1.toString());
-
-		//test
-		//System.out.println(distance_terminus[23][0]);
-
-		algoGlouton();
-		//RechercheTabout();
-
-		//System.out.println(lesBus.size());
-		int i = 1;
-		int totalKm =0;
-		int kmTrajet = 0;
-		int testDuree=0;
-
-
-		for(Bus b : lesBus){
-			System.out.print("bus"+i+" : ");
-			System.out.println(b.getKilometrageTotal());
-			totalKm += b.getKilometrageTotal();
-			kmTrajet += b.getKilometrageTrajet();
-			
-			//retour depot
-			//distance
-			Trajet dernierTrajet = b.getTrajetParcouru().get(b.TrajetParcouru.size() - 1);
-			int arriverDernierTrajet = indiceTerminus(dernierTrajet.getArrive());
-			totalKm += distance_terminus[arriverDernierTrajet][0];
-			//temps
-			dureeTotal += temps_terminus[arriverDernierTrajet][0];
-			//System.out.println("Temps pour lastarrivé -> depot : " +temps_terminus[arriverDernierTrajet][0] );
-				
-			//premier trajet
-			Trajet premierTrajet = b.getTrajetParcouru().get(0);
-			int departPremierTrajet = indiceTerminus(premierTrajet.getDepart());
-			testDuree += (dernierTrajet.gethArrive() - premierTrajet.gethDepart());
-			testDuree += temps_terminus[arriverDernierTrajet][0];
-			testDuree += temps_terminus[0][departPremierTrajet];
-			
 		
+		int soluceMax=539;
+		
+		for(int m=0;m<1000000;m++)
+		{
 			
+			initialisation();
 			
-			System.out.print("	nombreTrajet : ");
-			System.out.println(b.TrajetParcouru.size());
-			++i;
+			Fichier fichierSortie = new Fichier();
+
+			//System.out.println(l1_1.toString());
+
+			//test
+			//System.out.println(distance_terminus[23][0]);
+
+			algoGlouton2();
+			//RechercheTabout();
+
+			System.out.println(lesBus.size());
+			if (lesBus.size()<soluceMax)
+			{
+				soluceMax=lesBus.size();
+			}
+			int i = 1;
+			int totalKm =0;
+			int kmTrajet = 0;
+			int testDuree=0;
+
+
+			for(Bus b : lesBus){
+				//System.out.print("bus"+i+" : ");
+				//System.out.println(b.getKilometrageTotal());
+				totalKm += b.getKilometrageTotal();
+				kmTrajet += b.getKilometrageTrajet();
+				
+				//retour depot
+				//distance
+				Trajet dernierTrajet = b.getTrajetParcouru().get(b.TrajetParcouru.size() - 1);
+				int arriverDernierTrajet = indiceTerminus(dernierTrajet.getArrive());
+				totalKm += distance_terminus[arriverDernierTrajet][0];
+				//temps
+				dureeTotal += temps_terminus[arriverDernierTrajet][0];
+				//System.out.println("Temps pour lastarrivé -> depot : " +temps_terminus[arriverDernierTrajet][0] );
+					
+				//premier trajet
+				Trajet premierTrajet = b.getTrajetParcouru().get(0);
+				int departPremierTrajet = indiceTerminus(premierTrajet.getDepart());
+				testDuree += (dernierTrajet.gethArrive() - premierTrajet.gethDepart());
+				testDuree += temps_terminus[arriverDernierTrajet][0];
+				testDuree += temps_terminus[0][departPremierTrajet];
+				
+			
+				
+				
+				//System.out.print("	nombreTrajet : ");
+				//System.out.println(b.TrajetParcouru.size());
+				++i;
+			}
+
+			//System.out.println("totalKm = " +totalKm);
+			//System.out.println("kmTrajet = " +kmTrajet);
+			//System.out.println("dureeTotal = " +testDuree);
+			//System.out.println("dureeTotal = " +dureeTotal);
+
+			
+			System.out.println("version "+m);
+			System.out.println("Best "+soluceMax);
+			if(soluceMax==lesBus.size())
+			{
+				fichierSortie.CreationFichier(lesBus, trajets,testDuree,totalKm,m);
+			}
 		}
 
-		System.out.println("totalKm = " +totalKm);
-		System.out.println("kmTrajet = " +kmTrajet);
-		System.out.println("dureeTotal = " +testDuree);
-		//System.out.println("dureeTotal = " +dureeTotal);
-
-		fichierSortie.CreationFichier(lesBus, trajets,testDuree,totalKm);
+		
 
 	}
 }
