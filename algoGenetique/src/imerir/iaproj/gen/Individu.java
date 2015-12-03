@@ -95,9 +95,59 @@ public class Individu
 
 	private boolean checkValidite()
 	{
+		ArrayList <ArrayList <int[]>> horraires = new ArrayList <ArrayList <int[]>>();
+		int cpt=0;
+		
+		//Initialisation du tableau des horraires indisponnibles pour chaque bus
+		while(cpt<numerosBus.size())
+		{
+			horraires.add(new ArrayList<int[]>());
+			cpt++;
+		}
+		
+		cpt=0;
+		while(cpt<numerosBus.size())
+		{
+			//Création d'une fourchette d'indisponnibilité pour un bus
+			int[] departArrive=new int[2];
+			departArrive[0]=BaseDeTrajets.getTrajets().get(cpt).gethDepart();
+			departArrive[1]=BaseDeTrajets.getTrajets().get(cpt).gethArrive()+5;
+			
+			if(disponnibiliteBus(numerosBus.get(cpt), departArrive, horraires))
+			{
+				return false;
+			}
+			
+			//Ajout de cette indisponnibilité à celles du bus selectionné
+			horraires.get(numerosBus.get(cpt)).add(departArrive);
+			
+			cpt++;
+		}
+		
+		return true;
+	}
 
-
-		return false;
+	private boolean disponnibiliteBus(Integer numeroBus, int[] departArrive, ArrayList<ArrayList<int[]>> horraires)
+	{
+		for(int[] indisponibilite : horraires.get(numeroBus.intValue()))
+		{
+			if(departArrive[0]<=indisponibilite[1] && departArrive[0]>=indisponibilite[0])
+			{
+				return false;
+			}
+			
+			if(departArrive[1]<=indisponibilite[1] && departArrive[1]>=indisponibilite[0])
+			{
+				return false;
+			}
+			
+			if(indisponibilite[0]>=departArrive[0] && indisponibilite[0]<=departArrive[1])
+			{
+				return false;
+			}
+		}
+				
+		return true;
 	}
 
 	public void mutation() // fait muter un individu
